@@ -29,7 +29,7 @@ if(mysqli_num_rows($result) > 0){
         header("Location: index.html");
         exit();
 
-    } else {
+    } else 
         echo "Error: " . mysqli_error($conn);
     }
 
