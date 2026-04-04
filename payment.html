@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Payment | MBA Club</title>
+
+  <style>
+    body {
+      font-family: Arial;
+      text-align: center;
+      background: #f5f7fb;
+    }
+
+    .payment-box {
+      background: white;
+      width: 400px;
+      margin: 100px auto;
+      padding: 30px;
+      border-radius: 15px;
+      box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+    }
+
+    .pay-btn {
+      background: #2b7cff;
+      color: white;
+      padding: 12px 25px;
+      border: none;
+      border-radius: 8px;
+      font-size: 16px;
+      cursor: pointer;
+    }
+
+    .pay-btn:hover {
+      background: #1a5ed9;
+    }
+  </style>
+
+  <script src="https://checkout.razorpay.com/v1/checkout.js"></script>
+
+</head>
+<body>
+
+<div class="payment-box">
+
+  <h2>Complete Your Payment</h2>
+  <p>Course: CAT Complete Preparation</p>
+  <h3>Amount: ₹1</h3>
+
+  <button class="pay-btn" onclick="payNow()">Pay Now</button>
+
+</div>
+
+<script>
+function payNow() {
+
+  fetch("create_order.php")
+  .then(res => res.json())
+  .then(order => {
+
+    console.log(order); // 🔍 debug
+
+    var options = {
+      "key": "rzp_test_SWbktIvXs1FWRE",
+      "currency": "INR",
+      "name": "MBA CLUB",
+      "description": "CAT Course",
+      "order_id": order.id,
+
+      "handler": function (response) {
+
+        fetch("verify_payment.php", {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json"
+          },
+          body: JSON.stringify(response)
+        })
+        .then(res => res.text())
+        .then(data => {
+          console.log(data);
+          window.location.href = "login.html";
+        });
+
+      },
+
+      "prefill": {
+        "name": "Test User",
+        "email": "test@gmail.com",
+        "contact": "9999999999"
+      }
+    };
+
+    var rzp = new Razorpay(options);
+    rzp.open();
+
+  });
+}
+</script>
+
+</body>
+</html>

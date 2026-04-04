@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>MBA Club – Trusted MBA Preparation Platform</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+<script>
+window.onload = function() {
+
+  fetch("check_session.php")
+  .then(res => res.text())
+  .then(data => {
+
+    console.log("SESSION:", data); // debug
+
+    if (data.trim() !== "logged_in") {
+      document.getElementById("authModal").style.display = "flex";
+    }
+
+  })
+  .catch(err => {
+    console.log("Error:", err);
+    document.getElementById("authModal").style.display = "flex";
+  });
+
+}
+</script>
+
+<script>
+let isLogin = false;
+
+function switchMode() {
+  isLogin = !isLogin;
+
+  document.getElementById("modalTitle").innerText = isLogin ? "Login" : "Sign Up";
+
+  document.getElementById("nameField").style.display = isLogin ? "none" : "block";
+  document.getElementById("phoneField").style.display = isLogin ? "none" : "block";
+}
+
+function handleAuth() {
+
+  let name = document.getElementById("nameField").value;
+  let phone = document.getElementById("phoneField").value;
+  let email = document.getElementById("emailField").value;
+  let password = document.getElementById("passwordField").value;
+
+  if (!email || !password) {
+    alert("Fill all fields");
+    return;
+  }
+
+  let form = document.createElement("form");
+  form.method = "POST";
+
+  if (isLogin) {
+    form.action = "login.php";
+  } else {
+    form.action = "signup.php";
+
+    let nameInput = document.createElement("input");
+    nameInput.name = "name";
+    nameInput.value = name;
+
+    let phoneInput = document.createElement("input");
+    phoneInput.name = "phone";
+    phoneInput.value = phone;
+
+    form.appendChild(nameInput);
+    form.appendChild(phoneInput);
+  }
+
+  let emailInput = document.createElement("input");
+  emailInput.name = "email";
+  emailInput.value = email;
+
+  let passInput = document.createElement("input");
+  passInput.name = "password";
+  passInput.value = password;
+
+  form.appendChild(emailInput);
+  form.appendChild(passInput);
+
+  document.body.appendChild(form);
+  form.submit();
+}
+</script>
+
+<!-- SIGNUP / LOGIN MODAL -->
+<div id="authModal" class="modal">
+  <div class="modal-content">
+    <h2 id="modalTitle">Sign Up</h2>
+
+    <input type="text" id="nameField" placeholder="Full Name">
+    <input type="text" id="phoneField" placeholder="Mobile Number">
+    <input type="email" id="emailField" placeholder="Email">
+    <input type="password" id="passwordField" placeholder="Password">
+
+
+    <button class="primary-btn" onclick="handleAuth()">Continue</button>
+
+    <p class="switch-text">
+      Already have an account?
+      <span onclick="switchMode()">Login</span>
+    </p>
+  </div>
+</div>
+
+<!-- HERO SECTION -->
+<section class="hero">
+    <div class="overlay"></div>
+
+    <header class="navbar">
+        <h1 class="logo">MBA Club</h1>
+        <button class="login-btn">Login</button>
+    </header>
+
+    <div class="hero-content">
+        <h2 class="highlight">
+            Empowering India’s Future MBA Leaders
+        </h2>
+
+        <p class="hero-text">
+            MBA Club is a trusted learning ecosystem built for serious MBA aspirants. 
+            From fundamentals to 99+ percentile strategies, we combine expert mentoring, 
+            structured learning paths, and real-time performance tracking to help students 
+            crack CAT, XAT, SNAP, and other top management exams with confidence.
+        </p>
+
+        <div class="hero-buttons">
+            <button class="primary-btn" onclick="window.location.href='course.html'">
+                Explore Our Courses
+            </button>
+            <button class="secondary-btn">Free Material</button>
+        </div>
+    </div>
+</section>
+
+<!-- STATS -->
+<section class="stats">
+    <div>
+        <h3 class="highlight">50,000+</h3>
+        <p>Students Mentored</p>
+    </div>
+    <div>
+        <h3 class="highlight">99.9+</h3>
+        <p>Highest Percentile</p>
+    </div>
+    <div>
+        <h3 class="highlight">24×7</h3>
+        <p>Doubt Solving</p>
+    </div>
+</section>
+
+<!-- FEATURES -->
+<section class="features">
+    <div class="card">
+        <img src="images/module1.png">
+        <h4 class="highlight">Expert Modules</h4>
+        <p>Deep dive into Quant, LRDI, and VARC with exam-focused concepts, shortcuts, and high-quality practice curated by CAT experts.</p>
+    </div>
+
+    <div class="card">
+        <img src="images/module2.png">
+        <h4 class="highlight">Track Progress</h4>
+        <p>Analyze accuracy, speed, strengths, and weak areas using smart dashboards designed to improve scores consistently.</p>
+    </div>
+
+    <div class="card">
+        <img src="images/module3.png">
+        <h4 class="highlight">Community</h4>
+        <p>Be part of a focused aspirant community where learning, discussion, motivation, and growth happen together.</p>
+    </div>
+</section>
+
+<!-- WHY MBA CLUB -->
+<section class="why">
+    <h2 class="highlight">Why MBA Club?</h2>
+
+    <ul>
+        <li>Structured preparation roadmap from basics to advanced level.</li>
+        <li>Faculty with real CAT mentoring and industry experience.</li>
+        <li>High-quality practice questions aligned with latest exam trends.</li>
+        <li>Detailed performance analytics after every test and mock.</li>
+        <li>24×7 doubt resolution with expert and peer support.</li>
+        <li>Free learning resources to support self-paced preparation.</li>
+        <li>Focus on conceptual clarity, not rote learning.</li>
+        <li>Proven results with consistently high percentilers.</li>
+        <li>Affordable and transparent pricing for students.</li>
+        <li>One-stop platform for CAT, OMETs, and interview prep.</li>
+    </ul>
+
+    <footer style="background:#0A3D91; color:white; padding:20px; text-align:center; margin-top:50px;">
+
+  <p>© 2026 MBA Club. All rights reserved.</p>
+
+  <p>
+    <a href="terms.html" style="color:white;">Terms</a> |
+    <a href="privacy.html" style="color:white;">Privacy</a> |
+    <a href="refund.html" style="color:white;">Refund</a> |
+    <a href="cancellation.html" style="color:white;">Cancellation</a>
+  </p>
+
+  <p>Contact: mbaclub2025@gmail.com</p>
+
+</footer>
+
+</section>
+
+</body>
+</html>

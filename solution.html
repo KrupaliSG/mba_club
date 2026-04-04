@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Solutions | MBA Club</title>
+<link rel="stylesheet" href="../css/dashboard.css">
+
+<style>
+.solution-container button {
+  padding: 14px 28px;   /* 🔥 size bada */
+  font-size: 16px;      /* text bada */
+  border-radius: 10px;
+  border: none;
+  cursor: pointer;
+  margin-top: 20px;
+}
+
+.solution-container button:hover {
+  opacity: 0.9;
+  transform: scale(1.05);
+}
+
+.solution-card {
+  background: rgb(222, 218, 218);
+  padding: 20px;
+  border-radius: 12px;
+  margin: 20px 0;
+  box-shadow: 0 8px 20px rgba(0,0,0,0.1);
+}
+
+.correct { color: green; }
+.incorrect { color: red; }
+.skipped { color: rgb(244, 202, 96);}
+.explanation {
+  margin-top: 10px;
+  color: #000000;
+}
+
+.btn-result { background: #5fcaf1; color: rgb(0, 0, 0);}
+
+</style>
+</head>
+
+<body>
+
+<div class="layout">
+
+    <!-- Sidebar -->
+    <div class="sidebar">
+        <h2 class="brand">MBA Club</h2>
+        <ul>
+            <li onclick="window.location.href='../dashboard.php'">Dashboard</li>
+            <li>My Courses</li>
+            <li>Tests</li>
+            <li>Profile</li>
+            <li onclick="logout()">Logout</li>
+        </ul>
+
+	</div>
+
+<div class="main solution-container">
+
+  <h1>📘 Answer Key & Explanation</h1>
+
+  <div id="solutionBox"></div>
+
+  <button class="btn-result" onclick="goBack()">Back to Result</button>
+
+</div>
+
+<script src="../data/qa_questions.js"></script>
+<script src="../js/solution.js"></script>
+
+</body>
+</html>

@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Questions | MBA Club</title>
+
+  <link rel="stylesheet" href="../css/dashboard.css">
+  <link rel="stylesheet" href="../css/style.css">
+</head>
+<body>
+
+<div class="layout">
+
+  <!-- SIDEBAR -->
+  <aside class="sidebar">
+    <h2 class="brand">MBA Club</h2>
+    <ul>
+      <li onclick="goDashboard()">Dashboard</li>
+      <li>My Courses</li>
+      <li>Tests</li>
+      <li>Performance</li>
+      <li>Profile</li>
+      <li onclick="logout()">Logout</li>
+    </ul>
+  </aside>
+
+  <main class="main">
+
+    <!-- TOPIC TITLE -->
+    <h2 id="topicTitle"></h2>
+
+    <p id="timerBox" style="font-weight:600;"></p>
+
+    <!-- QUESTIONS -->
+    <div id="questionBox"></div>
+
+    <!-- SUBMIT & Next -->
+    <div id="navButtons">
+      <button id="nextBtn" class="next-btn" onclick="nextQuestion()">Next</button>
+      <button id="submitBtn" class="submit-btn" onclick="submitTest()">Submit</button>
+    </div>
+  </main>
+
+</div>
+
+<!-- DATA FILE -->
+<script src="../data/qa_questions.js"></script>
+
+<!-- MAIN LOGIC -->
+<script src="../js/questions.js" defer></script>
+
+</body>
+</html>

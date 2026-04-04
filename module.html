@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>QA Modules</title>
+<link rel="stylesheet" href="../css/dashboard.css">
+</head>
+
+<body>
+
+<div class="layout">
+
+    <!-- Sidebar -->
+    <div class="sidebar">
+        <h2 class="brand">MBA Club</h2>
+        <ul>
+            <li onclick="window.location.href='../dashboard.php'">Dashboard</li>
+            <li>My Courses</li>
+            <li>Tests</li>
+            <li>Profile</li>
+            <li onclick="logout()">Logout</li>
+        </ul>
+
+	</div>
+
+    <!-- MAIN -->
+<div class="main">
+
+    <h1 id="moduleTitle"></h1>
+
+    <!-- GRID WRAPPER -->
+    <div class="module-page-grid" id="moduleGrid"></div>
+</div>
+
+
+<script>
+function openModule(moduleName) {
+    localStorage.setItem("module", moduleName);
+    localStorage.setItem("section", "qa");
+
+    window.location.href = "submodule.html";
+}
+</script>
+
+<script src="../data/qa_questions.js"></script>
+<script src="../js/module.js"></script>
+
+</body>
+</html>

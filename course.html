@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>MBA Club Courses</title>
+  <link rel="stylesheet" href="css/style.css">
+
+  <style>
+    body {
+      background: #f5f7fb;
+      text-align: center;
+    }
+
+    .course-box {
+      background: white;
+      width: 400px;
+      margin: 80px auto;
+      padding: 30px;
+      border-radius: 15px;
+      box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+    }
+
+    .course-box h2 {
+      margin-bottom: 10px;
+    }
+
+    .course-box p {
+      margin: 8px 0;
+    }
+
+    .price {
+      font-size: 28px;
+      color: #0A3D91;
+      margin: 20px 0;
+    }
+
+    .buy-btn {
+      background: #2b7cff;
+      color: white;
+      padding: 12px 25px;
+      border: none;
+      border-radius: 8px;
+      font-size: 16px;
+      cursor: pointer;
+    }
+
+    .buy-btn:hover {
+      background: #1a5ed9;
+    }
+  </style>
+
+</head>
+<body>
+
+<h1>🚀 MBA CLUB COURSES</h1>
+
+<div class="course-box">
+
+  <h2>CAT Complete Preparation</h2>
+
+  <p>✔ QA + VARC + DILR Full Coverage</p>
+  <p>✔ Topic-wise Tests</p>
+  <p>✔ Real CAT Level Questions</p>
+  <p>✔ Performance Analysis</p>
+
+  <div class="price">₹499</div>
+
+  <button class="buy-btn" onclick="buyNow()">Buy Now</button>
+
+</div>
+
+<script>
+if (!localStorage.getItem("loggedIn")) {
+  window.location.href = "index.html";
+}
+</script>
+
+<script>
+function buyNow() {
+  window.location.href = "payment.html";
+}
+</script>
+
+</body>
+</html>

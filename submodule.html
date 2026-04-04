@@ -1,0 +1,56 @@
+<html>
+<head>
+    <title>Topics | MBA Club</title>
+    <link rel="stylesheet" href="../css/dashboard.css">
+</head>
+<body>
+
+<div class="layout">
+    <aside class="sidebar">
+        <h2 class="brand">MBA Club</h2>
+        <ul>
+            <li onclick="window.location.href='../dashboard.php'">Dashboard</li>
+            <li>My Courses</li>
+            <li>Tests</li>
+            <li>Profile</li>
+            <li onclick="logout()">Logout</li>
+        </ul>
+    </aside>
+
+    <main class="main">
+        <h1 id="moduleTitle"></h1>
+        <p>Select a topic to start practice</p>
+        <div id="topicGrid" class="module-grid"></div>
+    </main>
+</div>
+
+<!-- LEVEL POPUP -->
+<div id="levelPopup" class="popup-overlay">
+  <div class="popup-box">
+    <h3>Select Difficulty Level</h3>
+
+    <button onclick="selectLevel(1)">Level 1 (Easy)</button>
+    <button onclick="selectLevel(2)">Level 2 (Medium)</button>
+    <button onclick="selectLevel(3)">Level 3 (Hard)</button>
+    <button class="cancel-btn" onclick="closePopup('levelPopup')">Cancel</button>
+
+  </div>
+</div>
+
+<!-- MODE POPUP -->
+<div id="modePopup" class="popup-overlay">
+  <div class="popup-box">
+    <h3>Select Mode</h3>
+
+    <button onclick="startTest('timer')">Timer (20 min)</button>
+    <button onclick="startTest('practice')">Non Timer</button>
+    <button class="cancel-btn" onclick="closePopup('modePopup')">Cancel</button>
+  
+  </div>
+</div>
+
+<script src="../data/qa_questions.js"></script>
+<script src="../js/submodule.js"></script>
+
+</body>
+</html>
