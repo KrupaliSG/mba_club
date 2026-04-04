@@ -1,15 +1,13 @@
 <?php
+$host = "mysql.railway.internal";
+$user = "root";
+$password = "RiWmpQmqlyRULVrfqXyrUgXNAqziwlaj";
+$database = "railway";
+$port = "3306";
 
-$host = "localhost";
-$username = "root";
-$password = "";
-$database = "mba_club"; // ⚠️ apna actual DB name likhna
+$conn = mysqli_connect($host, $user, $password, $database, $port);
 
-$conn = new mysqli($host, $username, $password, $database);
-
-// check connection
-if ($conn->connect_error) {
-    die("Connection failed: " . $conn->connect_error);
+if (!$conn) {
+    die("Connection failed: " . mysqli_connect_error());
 }
-
 ?>
