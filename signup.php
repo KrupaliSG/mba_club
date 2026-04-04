@@ -16,7 +16,9 @@ $result = mysqli_query($conn, $check);
 
 if(mysqli_num_rows($result) > 0){
     echo "Email already exists!";
-} else {
+} 
+
+else {
 
     $sql = "INSERT INTO users (name, email, phone, password)
             VALUES ('$name', '$email', '$phone', '$hashed')";
@@ -29,7 +31,8 @@ if(mysqli_num_rows($result) > 0){
         header("Location: index.html");
         exit();
 
-    } else 
+    } 
+    else {
         echo "Error: " . mysqli_error($conn);
     }
 
