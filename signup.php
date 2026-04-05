@@ -5,7 +5,7 @@ include "connect.php";
 
 $name = $_POST['name'];
 $email = $_POST['email'];
-$phone = $_POST['phone'];
+$mobile = $_POST['mobile'];
 $password = $_POST['password'];
 
 $hashed = password_hash($password, PASSWORD_DEFAULT);
@@ -20,8 +20,8 @@ if(mysqli_num_rows($result) > 0){
 
 } else {
 
-    $sql = "INSERT INTO users (name, email, phone, password)
-            VALUES ('$name', '$email', '$phone', '$hashed')";
+    $sql = "INSERT INTO users (name, email, mobile, password)
+            VALUES ('$name', '$email', '$mobile', '$hashed')";
 
     if(mysqli_query($conn, $sql)){
         header("Location: index.html");
